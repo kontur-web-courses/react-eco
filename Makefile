@@ -7,6 +7,3 @@ slides: index.html
 
 watch:
 	npx cleaver@latest watch slides.md
-
-update:
-	npx npm-check@latest tasks -u

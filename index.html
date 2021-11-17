@@ -406,6 +406,383 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <p><a href="https://kontur-web-courses.github.io/react-eco/">https://kontur-web-courses.github.io/react-eco/</a></p>
 </section>
   </div>
+  <div class="slide hidden -" id="slide-2">
+    <section class="slide-content"><h1 id="-">О блоке</h1>
+<p>Современная frontend разработка использует большое количество инструментов, которые:</p>
+<ul>
+<li>позволяют оптимизировать приложения</li>
+<li>помогают писать более качественный код</li>
+<li>упрощают его поддержку</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-3">
+    <section class="slide-content"><h1 id="node-js">Node.js</h1>
+<ul>
+<li>Node.js — среда выполнения JavaScript с движком V8 от Google</li>
+<li>Она позволяет запускать JavaScript вне браузера</li>
+<li>Множество инструментов разработки написано именно на Node.js</li>
+<li>А некоторые современные на <a href="https://github.com/evanw/esbuild">Go</a> или <a href="https://github.com/swc-project/swc">Rust</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-4">
+    <section class="slide-content"><h1 id="-">Богатая стандартная библиотека</h1>
+<ul>
+<li><a href="https://nodejs.org/api/process.html">process</a> — информация и контроль текущего процесса Node.js</li>
+<li><a href="https://nodejs.org/api/console.html">console</a> — работа с консолью</li>
+<li><a href="https://nodejs.org/api/fs.html">fs</a> — файловая система</li>
+<li><a href="https://nodejs.org/api/path.html">path</a> — построение путей в разных ОС</li>
+<li><a href="https://nodejs.org/api/os.html">os</a> — особенности ОС</li>
+<li><a href="https://nodejs.org/api/http.html">http</a> — http клиент и сервер</li>
+<li>и <a href="https://nodejs.org/api/">другие</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-5">
+    <section class="slide-content"><h1 id="-">Модули</h1>
+<p>Модули на уровне языка появились только в стандарте <strong>ES2015</strong></p>
+<p>Поэтому программисты выкручивались разными способами:</p>
+<ul>
+<li>Шаблон <a href="https://learn.javascript.ru/closures-module">Модуль</a>, использующий замыкание</li>
+<li><em>AMD</em> (Asynchronous Module Definition) — шаблон модуля, позволяющий загружать модули асинхронно. Использует функцию require</li>
+<li><em>CommonJS</em> — шаблон модуля с синхронной загрузкой модулей. Стал популярен благодаря Node.js</li>
+<li><em>UMD</em> — модуль в таком формате можно подключить и в CommonJS-модуле, и в AMD-модуле</li>
+</ul>
+<p><a href="https://habrahabr.ru/company/yandex/blog/192874/#es2015-modules-2015">Обзор</a> эволюции модулей в JavaScript</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-6">
+    <section class="slide-content"><h1 id="commonjs-node-js">CommonJS в Node.js</h1>
+<ul>
+<li>изучи файлы <code>lib.cjs</code> и <code>main.cjs</code> в папке <code>part-01</code></li>
+<li>обрати внимание на расширение — <code>.cjs</code>, <a href="https://nodejs.org/api/packages.html#determining-module-system">подробнее о выборе системы модулей</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-7">
+    <section class="slide-content"><h1 id="-es2015">Модули ES2015</h1>
+<p>А так выглядят модули согласно стандарту ES2015</p>
+<pre><code class="lang-js"><span class="hljs-comment">// calc.js</span>
+<span class="hljs-keyword">let</span> notExported = <span class="hljs-string">"whatever"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">square</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">return</span> x * x;
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MY_CONSTANT = <span class="hljs-number">123</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">/* noop */</span>
+}
+
+<span class="hljs-comment">// main.js</span>
+<span class="hljs-keyword">import</span> noop <span class="hljs-keyword">from</span> <span class="hljs-string">"calc"</span>;
+<span class="hljs-keyword">import</span> { square } <span class="hljs-keyword">from</span> <span class="hljs-string">"calc"</span>;
+<span class="hljs-built_in">console</span>.log(square(<span class="hljs-number">3</span>));
+noop();
+</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-8">
+    <section class="slide-content"><h1 id="node-package-manager">Node Package Manager</h1>
+<ul>
+<li>Пакетный менеджер для Node.js</li>
+<li>Содержит <a href="https://blog.npmjs.org/post/615388323067854848/so-long-and-thanks-for-all-the-packages.html">более</a> 1 000 000 пакетов</li>
+<li>Устанавливается вместе с Node.js</li>
+</ul>
+<p><img src="assets/npm.png" alt="Логотип npm"></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-9">
+    <section class="slide-content"><h1 id="semantic-versioning">Semantic Versioning</h1>
+<p>Пакетам в npm принято ставить версию, согласно <a href="http://semver.org/">семантическому версионированию</a><br>Пример версии — <code>2.11.165-beta</code><br>В номере версии <code>MAJOR.MINOR.PATCH</code> увеличивается</p>
+<ul>
+<li>MAJOR-версия, при добавлении несовместимых изменений API</li>
+<li>MINOR-версия, при добавлении функциональности с сохранением обратной совместимости</li>
+<li>PATCH-версию, при исправлении багов</li>
+</ul>
+<p>Можно добавлять теги для пред-релизов, экспериментов, и другой метаинформации</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-10">
+    <section class="slide-content"><ol>
+<li>в папке <code>part-02</code> выполни <code>npm init</code>, соглашайся на все значения по умолчанию. В результате npm создаст файл с конфигурацией пакета — <code>package.json</code></li>
+<li>Установи пакет с указанием версии: <code>npm install --save-dev uvu@0.5.2</code> — эта библиотека вскоре понадобится</li>
+<li>Загляни в папку <code>node_modules</code> — там установленные модули</li>
+<li>Список зависимостей от других пакетов хранится в <code>package.json</code>. Убедись, что <code>package.json</code> зафиксирована зависимость от установленных пакетов</li>
+<li>Можно указывать не только конкретные версии пакетов, но также теги или диапазоны, список зафиксированных версий на момент установки хранится в файле <code>package-lock.json</code></li>
+</ol>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-11">
+    <section class="slide-content"><p>Разделы <code>package.json</code>, отвечающие за зависимости</p>
+<ul>
+<li><code>dependencies</code> — пакеты, которые нужны всегда. При установке добавляем флаг <code>--save</code>. по умолчанию добавляется для всех пакетов.</li>
+<li><code>devDependencies</code> — пакеты, которые нужны только для разработки. При установке добавляем флаг <code>--save-dev</code></li>
+<li><code>peerDependencies</code> — требования к другим зависимостям. Так пакет с плагином для jQuery может потребовать, чтобы его устанавливали только вместе с jQuery 3.0 и выше</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-12">
+    <section class="slide-content"><p>Пакеты можно устанавливать в папку с проектом</p>
+<pre><code class="lang-sh">npm install prettier
+</code></pre>
+<p>или глобально в систему — они попадут в <a href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules">специальную папку</a></p>
+<pre><code class="lang-sh">npm install -g prettier
+</code></pre>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-13">
+    <section class="slide-content"><p>В реальной разработке, если проект не новый, то все нужные пакеты уже записаны в <code>package.json</code>.</p>
+<p>Остается только запустить команду <code>npm i</code> (это краткая запись для <code>npm install</code>) и все зависимости из <code>package.json</code>
+установятся с указанными версиями библиотек</p>
+<p><a href="https://docs.npmjs.com/">Подробности</a> про npm и package.json</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-14">
+    <section class="slide-content"><h1 id="unit-">Unit тестирование</h1>
+<p>Минималистичная библиотека <a href="https://github.com/lukeed/uvu">uvu</a> уже установлена</p>
+<p>Популярные альтернативы: <a href="https://github.com/mochajs/mocha">Mocha</a> и <a href="https://github.com/facebook/jest">Jest</a></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-15">
+    <section class="slide-content"><h1 id="-">Запуск тестов</h1>
+<ul>
+<li>Изучи файл <code>part-02/tests/example.mjs</code></li>
+<li>Запусти тесты из него с помощью <code>node tests/example.mjs</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-16">
+    <section class="slide-content"><h1 id="-">Быстрый запуск</h1>
+<ol>
+<li>Настрой запуск тестов через npm, чтобы не писать каждый раз длинную команду</li>
+</ol>
+<pre><code class="lang-json">//Поправь в package.json
+&quot;scripts&quot;: { &quot;test&quot;: &quot;uvu tests&quot; }
+</code></pre>
+<ol start="2">
+<li>А теперь запусти тесты из консоли командой <code>npm test</code></li>
+<li>Заметь, что в скриптах npm можно не указывать путь до uvu:<ul>
+<li>npm догадается, что uvu — это пакет из <code>node_modules</code></li>
+<li>в <code>package.json</code> пакета uvu указано какой из скриптов выполнять по умолчанию</li>
+</ul>
+</li>
+</ol>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-17">
+    <section class="slide-content"><h1 id="-">Больше тестов</h1>
+<ol>
+<li>В файле <code>tests/add.mjs</code> создай тест, проверяющий, что <code>add(&#39;2&#39;, &#39;2&#39;)</code> это <code>4</code></li>
+<li>Запусти <code>npm test</code></li>
+<li>Тест должен упасть</li>
+<li>Почини тест (исправь код функции в файле<code>src/math.mjs</code>)</li>
+</ol>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-18">
+    <section class="slide-content"><h1 id="-">Статический анализ</h1>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-19">
+    <section class="slide-content"><h1 id="prettier">Prettier</h1>
+<ul>
+<li><a href="https://github.com/prettier/prettier">prettier</a> автоматически форматирует код</li>
+<li>перейди в <code>part-03</code></li>
+<li>выполни <code>npm install --save-dev prettier</code></li>
+<li>создай конфигурацию по умолчанию с помощью <code>echo {} &gt; .prettierrc.json</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-20">
+    <section class="slide-content"><h1 id="-">Упражнение</h1>
+<ul>
+<li>посмотри на файл <code>src/game.mjs</code></li>
+<li>выполни <code>npx prettier --write src</code></li>
+<li>попробуй изменить <a href="https://prettier.io/docs/en/options.html">настройки</a> из <code>.prettierrc.json</code></li>
+<li>используй каждый раз когда пишешь код на JavaScript</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-21">
+    <section class="slide-content"><h1 id="eslint">ESLint</h1>
+<p><a href="https://github.com/eslint/eslint">eslint</a> нужен для проверки кода на соответствие набору (обычно семантических правил)</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-22">
+    <section class="slide-content"><h1 id="-">Упражнение</h1>
+<ul>
+<li>в <code>part-03</code> выполни <code>npm install eslint --save-dev</code></li>
+<li>создай конфигурацию по умолчанию с помощью <code>npx eslint --init</code>:<ul style="font-size: 75%"> 
+<li>How would you like to use ESLint? &gt; To check syntax, find problems, and enforce code style</li>
+<li>What type of modules does your project use? &gt; JavaScript modules (import/export)</li>
+<li>Which framework does your project use? &gt; None of these</li>
+<li>Does your project use TypeScript? &gt; No</li>
+<li>Where does your code run? &gt; сними галочку с Browser и поставь на Node</li>
+<li>How would you like to define a style for your project? &gt; Use a popular style guide</li>
+<li>Which style guide do you want to follow? &gt; Airbnb: <a href="https://github.com/airbnb/javascript">https://github.com/airbnb/javascript</a></li>
+<li>What format do you want your config file to be in? &gt; JSON</li>
+</ul></li>
+<li>попробуй выполнить проверку на файле <code>game.mjs</code>, опции для запуска ищи <a href="https://eslint.org/docs/user-guide/command-line-interface">здесь</a></li>
+<li>найди какой-нибудь популярный JS проект на гитхаб, и попробуй проверить с текущей конфигурацией какой-нибудь файл из него</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-23">
+    <section class="slide-content"><h1 id="-">Игнорирование</h1>
+<p>Возможный источник ошибок – проверка ненужных файлов:</p>
+<ul>
+<li>чужого кода в node_modules</li>
+<li>результатов сборки</li>
+<li>специфичных файлов</li>
+</ul>
+<p>Для этого существует специальный файл настроек — <code>.eslintignore</code> – в нем описываются правила игнорирования при проверке</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-24">
+    <section class="slide-content"><h1 id="-">Проверки при написании кода</h1>
+<p>Чтобы ошибки проверялись при написании кода надо подключить ESLint к твоей любимой IDE:</p>
+<ul>
+<li>В Visual Studio Code нужно просто скачать расширение ESLint и все заработает.</li>
+<li>Чтобы включить ESLint в WebStorm, поищи в Settings по фразе ESLint и поставь галочку</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-25">
+    <section class="slide-content"><h1 id="-">Сборка и транспиляция</h1>
+<p>Современный фронтенд код не всегда можно использовать прямо в браузере пользователя, да и браузеры бывают разные, скачивать много мелких модулей долго, к тому же jsx и typescript браузер тоже не понимает. Такого рода проблемы решаются различными сборщиками и компиляторами</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-26">
+    <section class="slide-content"><h1 id="webpack">Webpack</h1>
+<p><img src="assets/webpack.png" alt="процесс сборки webpack"></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-27">
+    <section class="slide-content"><h1 id="-webpack">Точки расширения Webpack</h1>
+<ul>
+<li><em>loaders</em> позволяют подавать на вход файлы различных форматов:<ul>
+<li>написаны для популярных форматов</li>
+<li>e.g. компиляция в JavaScript</li>
+<li>e.g. компиляция less, sass, stylus в css</li>
+</ul>
+</li>
+<li><em>plugins</em> управляют дальнейшими преобразованиями:<ul>
+<li>минимизация</li>
+<li>объединение множества файлов в один</li>
+<li>разделение на бандлы (&quot;куски кода&quot;, например, бандл со всеми библиотеками или бандл с кодом для какой-то одной
+страницы)</li>
+</ul>
+</li>
+<li><em>конфигурирование</em> для разных окружений:<ul>
+<li>разработки</li>
+<li>тестирования</li>
+<li>продакшн</li>
+</ul>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-28">
+    <section class="slide-content"><h1 id="-webpack">Использование Webpack</h1>
+<ul>
+<li>в <code>part-04</code> выполни <code>npm install</code></li>
+<li>найди файл <code>webpack.config.js</code> и замени в нем строки на нужные, чтобы из файла <code>src/index.js</code> получился <code>dist/main.js</code></li>
+<li>после этого выполни в папке команду <code>npx webpack --config webpack.config.js</code> и открой в браузере файл <code>index.html</code></li>
+<li>обычно полезные команды выносят в раздел <code>scripts</code> в <code>package.json</code>, добавь туда: <code>&quot;build&quot;: &quot;webpack&quot;</code></li>
+<li>теперь запускать сборку можно с помощью <code>npm run build</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-29">
+    <section class="slide-content"><h1 id="-">Отладка</h1>
+<p>Сейчас в коде есть ошибка, но отлаживать непонятный main.js в браузере неприятно. Поэтому сгенерируй <a href="https://webpack.js.org/guides/development/#using-source-maps">sourcemap</a>:</p>
+<ul>
+<li>если кликнуть на ссылку с названием файла и номером строки, то браузер покажет эту строку на вкладке Source</li>
+<li>для этого добавь поле <code>mode</code> со значением <code>development</code></li>
+<li>и поле <code>devtool</code> со значением <code>source-map</code></li>
+<li>в браузере на вкладке Sources в Dev Tools должны появиться отдельные js модули.</li>
+<li>теперь из ошибки в консоли можно попасть прямо в код исходного файла. Попробуй!</li>
+<li>теперь можно пофиксить ошибку</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-30">
+    <section class="slide-content"><h1 id="dev-server">Dev server</h1>
+<p>В разработке часто полезно иметь возможность автоматически пересобирать бандл, когда происходит изменение исходного кода<br>Для этого в webpack есть несколько <a href="https://webpack.js.org/guides/development/#choosing-a-development-tool">вариантов</a>, самый простой из них — наблюдение:</p>
+<ul>
+<li>добавь скрипт <code>&quot;watch&quot;: &quot;webpack --watch&quot;</code></li>
+<li>теперь при запуске <code>npm run watch</code> webpack будет следить за файлами</li>
+<li>попробуй изменить что-то в <code>primes.js</code> и перезагрузить страницу</li>
+<li>для автоматической перезагрузки, можно отдельно настроить <a href="https://webpack.js.org/guides/development/#using-webpack-dev-server">dev-server</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-31">
+    <section class="slide-content"><h1 id="babel">Babel</h1>
+<p>Браузеры и даже Node.js часто не знают новомодных фич стандарта. Можно ли их использовать?</p>
+<p>Можно с помощью <a href="https://babeljs.io/">Babel</a>, превращающего новый JS в старый</p>
+<p>Babel – это транспайлер, как компилятор, только структура программы не меняется</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-32">
+    <section class="slide-content"><h1 id="babel">Babel</h1>
+<ul>
+<li>установи Babel и набор настроек к нему: <code>npm install -D babel-loader @babel/core @babel/preset-env</code></li>
+<li>добавь специальные правила в <code>webpack.config.js</code> как написано <a href="https://webpack.js.org/loaders/babel-loader/#usage">здесь</a></li>
+<li><code>preset-env</code> умеет выбирать набор трансформаций по базе поддержки фич в браузерах с <a href="https://babeljs.io/docs/en/babel-preset-env#browserslist-integration">помощью browserslist</a></li>
+<li>добавь в <code>package.json</code> поле <code>browserslist</code> со значением <code>IE 11</code></li>
+<li>в реальной разработке не достаточно транспилировать код, чтобы он заработал в IE 11, приходится еще помогать браузеру в реализации некоторых фич с помощью полифиллов, например <a href="https://github.com/zloirock/core-js">core-js</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-33">
+    <section class="slide-content"><h1 id="create-react-app">create react app</h1>
+<p>Обычно в командах уже настроено всё что нужно, будь то webpack, rollup или vite, а для новых проектов выбирают шаблон, например create-react-app</p>
+<p>Перейди в папку part-05 и выполни в ней команду <code>npx create-react-app my-app --template typescript</code></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-34">
+    <section class="slide-content"><h1 id="create-react-app">create react app</h1>
+<p>CRA создает окружение в котором есть много полезных вещей:</p>
+<ul>
+<li>скрипты для разработки <code>npm start</code>, тестирования <code>npm test</code> и сборки в прод <code>npm run build</code></li>
+<li>настроенный webpack и babel с поддержкой react, typescript*, <a href="https://create-react-app.dev/docs/supported-browsers-features">современных фич</a> и набор полифиллов</li>
+<li>настроенный ESLint, но prettier нужно <a href="https://create-react-app.dev/docs/setting-up-your-editor#formatting-code-automatically">добавлять отдельно</a></li>
+<li>поддержка CSS и SASS для <a href="https://create-react-app.dev/docs/adding-a-stylesheet">стилизации компонентов</a></li>
+<li>поддержка postcss и autoprefixer <a href="https://create-react-app.dev/docs/post-processing-css">для обработки css</a></li>
+<li>поддержка загрузки картинок, шрифтов и <a href="https://create-react-app.dev/docs/adding-images-fonts-and-files">других файлов</a></li>
+<li><a href="https://create-react-app.dev/">документация по этим и другим фичам живет здесь</a></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-35">
+    <section class="slide-content"><h1 id="create-react-app">create react app</h1>
+<p>По умолчанию большая часть конфигурации скрыта от пользователя, чтобы увидеть внутренности можно выполнить <code>npm run eject</code></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-36">
+    <section class="slide-content"><h1 id="css-modules">CSS Modules</h1>
+<p><a href="https://github.com/css-modules/css-modules">Хитрая спецификация</a>, которая позволяет гарантировать уникальность стилей не прибегая к BEM</p>
+<p>CRA <a href="https://create-react-app.dev/docs/adding-a-css-modules-stylesheet">поддерживает эту возможность</a> для файлов с расширением <code>.module.css</code></p>
+<p>Благодаря этой, можно использовать понятные названия стилей в файлах, а при сборке они автоматически преобразуются во что-то вида <code>Button_error_ax7yz</code></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-37">
+    <section class="slide-content"><h1 id="routing">Routing</h1>
+<p>Не смотря на то, что на React мы обычно делаем SPA, нам всё равно нужны &quot;виртуальные&quot; страницы</p>
+<p>Для реализации роутинга есть много библиотек, но мы посмотрим на <a href="https://reactrouter.com/">react-router</a></p>
+<p>Перейди на <a href="https://reactrouter.com/docs/en/v6/getting-started/tutorial">https://reactrouter.com/docs/en/v6/getting-started/tutorial</a> продолжать будем там</p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-38">
+    <section class="slide-content"><h1 id="-">Время большой практики</h1>
+<p>Перейди в <code>part-06</code> и следуй инструкциям из <code>README.md</code></p>
+</section>
+  </div>
+  <div class="slide hidden -" id="slide-39">
+    <section class="slide-content"><h1 id="-">Итоги</h1>
+</section>
+  </div>
 
   <div class="controls">
     <div class="arrow prev"></div>
