@@ -394,6 +394,10 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
   margin: 0 auto;
 }
 
+.slide-content img + img {
+  margin-top: 40px;
+}
+
   </style>
 </head>
 <body>
@@ -537,13 +541,42 @@ noop();
 <p><a href="https://docs.npmjs.com/">Подробности</a> про npm и package.json</p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-14">
+    <div class="slide hidden -" id="slide-14">
+        <section class="slide-content">
+          <h1 id="package-managers-variety">Многообразие пакетных менеджеров</h1>
+          <p>
+            <img src="assets/npm.png" alt="Логотип npm" width="309">
+            <img src="assets/yarn.png" alt="Логотип yarn" width="309">
+            <img src="assets/pnpm.png" alt="Логотип pnpm" width="309">
+          </p>
+        </section>
+    </div>
+    <div class="slide hidden -" id="slide-15">
+      <section class="slide-content"><h1 id="yarn-package-manager">Yet Another Resource Negotiator</h1>
+        <ul>
+          <li>Как и npm, пытается смёрджить дублирующиеся или семантически схожие зависимости — hoisting. <a href="https://maier.tech/posts/a-guide-to-understanding-how-yarn-hoists-dependencies-and-handles-conflicting-packages" target="_blank">Подробнее про hoisting</a></li>
+          <li>В отличие от npm, загружает и установливает пакеты параллельно</li>
+          <li>В v2 избавился от node_modules — патчит нодовскую функцию импорта, смотрит в свою хэш таблицу с зависимостями и отдаёт нужный пакет</li>
+        </ul>
+        <p><img src="assets/yarn.png" alt="Логотип yarn" height="200"></p>
+      </section>
+    </div>
+    <div class="slide hidden -" id="slide-16">
+      <section class="slide-content"><h1 id="pnpm-package-manager">Performant NPM</h1>
+        <ul>
+          <li>Семантически схожие зависимости не схлапываются</li>
+          <li>Одна глобальная папка с node_modules и симлинки</li>
+        </ul>
+        <p><img src="assets/pnpm.png" alt="Логотип pnpm" width="200"></p>
+      </section>
+    </div>
+  <div class="slide hidden -" id="slide-17">
     <section class="slide-content"><h1 id="unit-">Unit тестирование</h1>
 <p>Минималистичная библиотека <a href="https://github.com/lukeed/uvu">uvu</a> уже установлена</p>
 <p>Популярные альтернативы: <a href="https://github.com/mochajs/mocha">Mocha</a> и <a href="https://github.com/facebook/jest">Jest</a></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-15">
+  <div class="slide hidden -" id="slide-18">
     <section class="slide-content"><h1 id="-">Запуск тестов</h1>
 <ul>
 <li>Изучи файл <code>part-02/tests/example.mjs</code></li>
@@ -551,7 +584,7 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-16">
+  <div class="slide hidden -" id="slide-19">
     <section class="slide-content"><h1 id="-">Быстрый запуск</h1>
 <ol>
 <li>Настрой запуск тестов через npm, чтобы не писать каждый раз длинную команду</li>
@@ -569,7 +602,7 @@ noop();
 </ol>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-17">
+  <div class="slide hidden -" id="slide-20">
     <section class="slide-content"><h1 id="-">Больше тестов</h1>
 <ol>
 <li>В файле <code>tests/add.mjs</code> создай тест, проверяющий, что <code>add(&#39;2&#39;, &#39;2&#39;)</code> это <code>4</code></li>
@@ -579,11 +612,11 @@ noop();
 </ol>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-18">
+  <div class="slide hidden -" id="slide-21">
     <section class="slide-content"><h1 id="-">Статический анализ</h1>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-19">
+  <div class="slide hidden -" id="slide-22">
     <section class="slide-content"><h1 id="prettier">Prettier</h1>
 <ul>
 <li><a href="https://github.com/prettier/prettier">prettier</a> автоматически форматирует код</li>
@@ -593,7 +626,7 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-20">
+  <div class="slide hidden -" id="slide-23">
     <section class="slide-content"><h1 id="-">Упражнение</h1>
 <ul>
 <li>посмотри на файл <code>src/game.mjs</code></li>
@@ -603,16 +636,16 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-21">
+  <div class="slide hidden -" id="slide-24">
     <section class="slide-content"><h1 id="eslint">ESLint</h1>
 <p><a href="https://github.com/eslint/eslint">eslint</a> нужен для проверки кода на соответствие набору (обычно семантических правил)</p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-22">
+  <div class="slide hidden -" id="slide-25">
     <section class="slide-content"><h1 id="-">Упражнение</h1>
 <ul>
 <li>в <code>part-03</code> выполни <code>npm install eslint --save-dev</code></li>
-<li>создай конфигурацию по умолчанию с помощью <code>npx eslint --init</code>:<ul style="font-size: 75%"> 
+<li>создай конфигурацию по умолчанию с помощью <code>npx eslint --init</code>:<ul style="font-size: 75%">
 <li>How would you like to use ESLint? &gt; To check syntax, find problems, and enforce code style</li>
 <li>What type of modules does your project use? &gt; JavaScript modules (import/export)</li>
 <li>Which framework does your project use? &gt; None of these</li>
@@ -627,7 +660,7 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-23">
+  <div class="slide hidden -" id="slide-26">
     <section class="slide-content"><h1 id="-">Игнорирование</h1>
 <p>Возможный источник ошибок – проверка ненужных файлов:</p>
 <ul>
@@ -638,7 +671,7 @@ noop();
 <p>Для этого существует специальный файл настроек — <code>.eslintignore</code> – в нем описываются правила игнорирования при проверке</p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-24">
+  <div class="slide hidden -" id="slide-27">
     <section class="slide-content"><h1 id="-">Проверки при написании кода</h1>
 <p>Чтобы ошибки проверялись при написании кода надо подключить ESLint к твоей любимой IDE:</p>
 <ul>
@@ -647,17 +680,17 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-25">
+  <div class="slide hidden -" id="slide-28">
     <section class="slide-content"><h1 id="-">Сборка и транспиляция</h1>
 <p>Современный фронтенд код не всегда можно использовать прямо в браузере пользователя, да и браузеры бывают разные, скачивать много мелких модулей долго, к тому же jsx и typescript браузер тоже не понимает. Такого рода проблемы решаются различными сборщиками и компиляторами</p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-26">
+  <div class="slide hidden -" id="slide-29">
     <section class="slide-content"><h1 id="webpack">Webpack</h1>
 <p><img src="assets/webpack.png" alt="процесс сборки webpack"></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-27">
+  <div class="slide hidden -" id="slide-30">
     <section class="slide-content"><h1 id="-webpack">Точки расширения Webpack</h1>
 <ul>
 <li><em>loaders</em> позволяют подавать на вход файлы различных форматов:<ul>
@@ -682,7 +715,7 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-28">
+  <div class="slide hidden -" id="slide-31">
     <section class="slide-content"><h1 id="-webpack">Использование Webpack</h1>
 <ul>
 <li>в <code>part-04</code> выполни <code>npm install</code></li>
@@ -693,7 +726,7 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-29">
+  <div class="slide hidden -" id="slide-32">
     <section class="slide-content"><h1 id="-">Отладка</h1>
 <p>Сейчас в коде есть ошибка, но отлаживать непонятный main.js в браузере неприятно. Поэтому сгенерируй <a href="https://webpack.js.org/guides/development/#using-source-maps">sourcemap</a>:</p>
 <ul>
@@ -706,7 +739,7 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-30">
+  <div class="slide hidden -" id="slide-33">
     <section class="slide-content"><h1 id="dev-server">Dev server</h1>
 <p>В разработке часто полезно иметь возможность автоматически пересобирать бандл, когда происходит изменение исходного кода<br>Для этого в webpack есть несколько <a href="https://webpack.js.org/guides/development/#choosing-a-development-tool">вариантов</a>, самый простой из них — наблюдение:</p>
 <ul>
@@ -717,14 +750,14 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-31">
+  <div class="slide hidden -" id="slide-34">
     <section class="slide-content"><h1 id="babel">Babel</h1>
 <p>Браузеры и даже Node.js часто не знают новомодных фич стандарта. Можно ли их использовать?</p>
 <p>Можно с помощью <a href="https://babeljs.io/">Babel</a>, превращающего новый JS в старый</p>
 <p>Babel – это транспайлер, как компилятор, только структура программы не меняется</p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-32">
+  <div class="slide hidden -" id="slide-35">
     <section class="slide-content"><h1 id="babel">Babel</h1>
 <ul>
 <li>установи Babel и набор настроек к нему: <code>npm install -D babel-loader @babel/core @babel/preset-env</code></li>
@@ -735,13 +768,13 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-33">
+  <div class="slide hidden -" id="slide-36">
     <section class="slide-content"><h1 id="create-react-app">create react app</h1>
 <p>Обычно в командах уже настроено всё что нужно, будь то webpack, rollup или vite, а для новых проектов выбирают шаблон, например create-react-app</p>
 <p>Перейди в папку part-05 и выполни в ней команду <code>npx create-react-app my-app --template typescript</code></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-34">
+  <div class="slide hidden -" id="slide-37">
     <section class="slide-content"><h1 id="create-react-app">create react app</h1>
 <p>CRA создает окружение в котором есть много полезных вещей:</p>
 <ul>
@@ -755,31 +788,31 @@ noop();
 </ul>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-35">
+  <div class="slide hidden -" id="slide-38">
     <section class="slide-content"><h1 id="create-react-app">create react app</h1>
 <p>По умолчанию большая часть конфигурации скрыта от пользователя, чтобы увидеть внутренности можно выполнить <code>npm run eject</code></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-36">
+  <div class="slide hidden -" id="slide-39">
     <section class="slide-content"><h1 id="css-modules">CSS Modules</h1>
 <p><a href="https://github.com/css-modules/css-modules">Хитрая спецификация</a>, которая позволяет гарантировать уникальность стилей не прибегая к BEM</p>
 <p>CRA <a href="https://create-react-app.dev/docs/adding-a-css-modules-stylesheet">поддерживает эту возможность</a> для файлов с расширением <code>.module.css</code></p>
 <p>Благодаря этой, можно использовать понятные названия стилей в файлах, а при сборке они автоматически преобразуются во что-то вида <code>Button_error_ax7yz</code></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-37">
+  <div class="slide hidden -" id="slide-40">
     <section class="slide-content"><h1 id="routing">Routing</h1>
 <p>Не смотря на то, что на React мы обычно делаем SPA, нам всё равно нужны &quot;виртуальные&quot; страницы</p>
 <p>Для реализации роутинга есть много библиотек, но мы посмотрим на <a href="https://reactrouter.com/">react-router</a></p>
 <p>Перейди на <a href="https://reactrouter.com/docs/en/v6/getting-started/tutorial">https://reactrouter.com/docs/en/v6/getting-started/tutorial</a> продолжать будем там</p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-38">
+  <div class="slide hidden -" id="slide-41">
     <section class="slide-content"><h1 id="-">Время большой практики</h1>
 <p>Перейди в <code>part-06</code> и следуй инструкциям из <code>README.md</code></p>
 </section>
   </div>
-  <div class="slide hidden -" id="slide-39">
+  <div class="slide hidden -" id="slide-42">
     <section class="slide-content"><h1 id="-">Итоги</h1>
 </section>
   </div>
